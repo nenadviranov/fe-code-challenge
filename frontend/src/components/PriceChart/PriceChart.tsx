@@ -10,24 +10,25 @@ type PriceChartProps = {
 
 const PriceChart = ({ symbolId }: PriceChartProps) => {
   const dispatch = useAppDispatch();
+  const { activeSymbol } = useAppSelector((state) => state.store);
+  const symbol = symbolId || activeSymbol;
   useEffect(() => {
-    if (symbolId) {
-      dispatch(fetchPriceHistory(symbolId));
+    if (activeSymbol) {
+      dispatch(fetchPriceHistory(activeSymbol));
     }
-  }, [dispatch, symbolId]);
-
+  }, [dispatch, activeSymbol]);
   const apiState = useAppSelector(selectors.apiState);
   const data = useAppSelector(selectors.selectPriceHistory);
   const symbolInfo = useAppSelector(selectors.selectSymbolInfo);
 
-  if (apiState.loading && symbolId !== null)
+  if (apiState.loading && symbol !== null)
     return (
       <div className="priceChart">
         <Loading />
       </div>
     );
   if (apiState.error) return <div className="priceChart">Failed to get price history!</div>;
-  if (!symbolId) return <div className="priceChart">Select stock</div>;
+  if (!symbol) return <div className="priceChart">Select stock</div>;
   return (
     <div className="priceChart">
       <div>{symbolInfo}</div>
