@@ -4,4 +4,18 @@
     gap: 24px;
     background-color: #e2e0e0;
     padding: 25px;
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
+.symbolsCardGrid::-webkit-scrollbar {
+    display: none;
+  }
+
+
+@media (max-width: 1023px) {
+    .symbolsCardGrid {
+      height: 55vh;
+    }
+  }
