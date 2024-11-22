@@ -4,7 +4,7 @@ import { useAppSelector } from '@/hooks/redux';
 import ListItem from '@/components/ListItem';
 import SymbolCardHeader from './SymbolCardHeader'
 import SymbolCardInfo from './SymbolCardInfo'
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 type SymbolCardProps = {
   id: string;
@@ -26,40 +26,32 @@ const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
     prevCountRef.current = price; 
   }, [price]);
 
-  const addClassNames = () => {
-    let className = ['symbolCard'];
-    if(activeSymbol) {
-      if(activeSymbol === id) {
-        className.push('symbolCard--clicked')
-      }
-      if (activeSymbol !== id) {
-        className.push('symbolCard--not-clicked')
-      }
-    }
-    const prevPrice = prevCountRef.current;
-    if(prevPrice !== null) {
-      const increasePercent = (100 * (price - prevPrice)) / prevPrice;
-
-
+  const addClassNames = useMemo(() => { 
+  let className = ['symbolCard'];
+  if(activeSymbol) {
+    className.push(activeSymbol === id ? 'symbolCard__clicked' : 'symbolCard__not-clicked');
+  }
+  const prevPrice = prevCountRef.current;
+  if(prevPrice !== null) {
+    const increasePercent = (100 * (price - prevPrice)) / prevPrice;
     if (price > prevPrice) {
       if (increasePercent >= 25) {
         className.push('symbolCard__shake');
       }
-      className.push('symbolCard--green-shadow');
+      className.push('symbolCard__green-shadow');
     }
     if (price < Number(prevPrice)) {
-      className.push('symbolCard--red-shadow');
+      className.push('symbolCard__red-shadow');
     }
   }
-    return className.join(' ');
-  }
+  return className.join(' ');
+}, [price, activeSymbol, id])
+
 
   return (
-    <div onClick={handleOnClick} className={addClassNames()}>
-      <div>
+    <div onClick={handleOnClick} className={addClassNames}>
         <SymbolCardHeader trend={trend} id={id}/>
         <SymbolCardInfo price={price} companyName={companyName} industry={industry} marketCap={marketCap}  showCardInfo={showCardInfo} />
-      </div>
     </div>
   );
 };

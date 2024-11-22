@@ -33,20 +33,20 @@
 }
 
 
-.symbolCard--clicked {
+.symbolCard__clicked {
   box-shadow: 0 0 15px 0 var(--colorDark);
   scale: 1.02;
 }
 
-.symbolCard--not-clicked {
+.symbolCard__not-clicked {
   scale: 0.98;
 }
 
-.symbolCard--green-shadow {
+.symbolCard__green-shadow {
   animation: greenShadow 0.5s ease;
 }
 
-.symbolCard--red-shadow {
+.symbolCard__red-shadow {
   animation: redShadow 0.5s ease;
 }
 

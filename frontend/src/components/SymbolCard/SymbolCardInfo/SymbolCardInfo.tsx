@@ -41,9 +41,6 @@ const SymbolCardBody = ({ price, companyName, industry, marketCap, showCardInfo 
         <div>PRICE:</div> 
         <div>{formattedPrice}</div>
       </div>
-      {/* {showCardInfo ? <ListItem Icon={<CompanyIcon />} label={companyName} spacing="space-between"/>  : null}
-      {showCardInfo ?<ListItem Icon={<IndustryIcon />} label={industry} spacing="space-between" />: null}
-      {showCardInfo ?<ListItem Icon={<MarketCapIcon />} label={formattedMarketCap} spacing="space-between" />: null} */}
       {showCardInfo ? itemListInfo.map(({id, label, icon}) => (
       <ListItem key={id} Icon={icon} label={label} spacing="space-between" />
       ))
