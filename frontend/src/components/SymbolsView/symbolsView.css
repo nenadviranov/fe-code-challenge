@@ -1,0 +1,14 @@
+.symbolsView__content {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+    .symbolsView__content {
+        flex-direction: row-reverse;
+    }
+}
+
+.symbolsView__cards{
+    width: 100%;
+}
