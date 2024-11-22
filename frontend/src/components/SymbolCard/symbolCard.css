@@ -43,11 +43,13 @@
 }
 
 .symbolCard__green-shadow {
-  animation: greenShadow 0.5s ease;
+  animation: greenShadow 0.5s ease-in-out;
+  animation-duration: 2s;
 }
 
 .symbolCard__red-shadow {
-  animation: redShadow 0.5s ease;
+  animation: redShadow ease-in-out;
+  animation-duration: 2s;
 }
 
 .symbolCard__shake {

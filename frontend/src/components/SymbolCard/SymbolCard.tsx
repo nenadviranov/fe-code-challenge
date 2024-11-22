@@ -27,31 +27,31 @@ const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
   }, [price]);
 
   const addClassNames = useMemo(() => { 
-  let className = ['symbolCard'];
-  if(activeSymbol) {
-    className.push(activeSymbol === id ? 'symbolCard__clicked' : 'symbolCard__not-clicked');
-  }
-  const prevPrice = prevCountRef.current;
-  if(prevPrice !== null) {
-    const increasePercent = (100 * (price - prevPrice)) / prevPrice;
-    if (price > prevPrice) {
-      if (increasePercent >= 25) {
-        className.push('symbolCard__shake');
+    let className = ['symbolCard'];
+    if(activeSymbol) {
+      className.push(activeSymbol === id ? 'symbolCard__clicked' : 'symbolCard__not-clicked');
+    }
+    const prevPrice = prevCountRef.current;
+    if(prevPrice !== null) {
+      const increasePercent = (100 * (price - prevPrice)) / prevPrice;
+      if (price > prevPrice) {
+        if (increasePercent >= 25) {
+          className.push('symbolCard__shake');
+        }
+        className.push('symbolCard__green-shadow');
       }
-      className.push('symbolCard__green-shadow');
+      if (price < Number(prevPrice)) {
+        className.push('symbolCard__red-shadow');
+      }
     }
-    if (price < Number(prevPrice)) {
-      className.push('symbolCard__red-shadow');
-    }
-  }
-  return className.join(' ');
+    return className.join(' ');
 }, [price, activeSymbol, id])
 
 
   return (
     <div onClick={handleOnClick} className={addClassNames}>
         <SymbolCardHeader trend={trend} id={id}/>
-        <SymbolCardInfo price={price} companyName={companyName} industry={industry} marketCap={marketCap}  showCardInfo={showCardInfo} />
+        <SymbolCardInfo price={price} companyName={companyName} industry={industry} marketCap={marketCap} showCardInfo={showCardInfo} />
     </div>
   );
 };
