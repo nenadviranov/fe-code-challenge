@@ -1,0 +1,10 @@
+.symbolCard__info {
+    background-color: var(--colorWhite);
+    padding: 8px;
+  }
+
+
+.symbolCard__price{
+    display: flex;
+    justify-content: space-between;
+}

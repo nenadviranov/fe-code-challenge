@@ -1,0 +1,16 @@
+.symbolCard__header {
+    position: relative;
+    background-color: var(--colorDark);
+    color: var(--colorWhite);
+    font-size: 18px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .symbolCard__trendIcon {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    width: 50px;
+  }
