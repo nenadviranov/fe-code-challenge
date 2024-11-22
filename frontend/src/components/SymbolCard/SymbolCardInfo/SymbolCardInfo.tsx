@@ -4,6 +4,7 @@ import { ReactComponent as CompanyIcon } from '@/assets/company.svg';
 import { ReactComponent as IndustryIcon } from '@/assets/industry.svg';
 import { ReactComponent as MarketCapIcon } from '@/assets/market_cap.svg';
 import { currencyFormatter } from '../../../utils/currencyFormatter'
+import { memo } from 'react';
 
 type SymbolCardInfoProps = {
     price: number;
@@ -49,4 +50,4 @@ const SymbolCardBody = ({ price, companyName, industry, marketCap, showCardInfo 
   );
 };
 
-export default SymbolCardBody;
+export default memo(SymbolCardBody);

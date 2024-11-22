@@ -4,7 +4,7 @@ import { useAppSelector } from '@/hooks/redux';
 import ListItem from '@/components/ListItem';
 import SymbolCardHeader from './SymbolCardHeader'
 import SymbolCardInfo from './SymbolCardInfo'
-import { useEffect, useMemo, useRef } from 'react';
+import { memo, useEffect, useMemo, useRef } from 'react';
 
 type SymbolCardProps = {
   id: string;
@@ -55,4 +55,4 @@ const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
     </div>
   );
 };
-export default SymbolCard;
+export default memo(SymbolCard);

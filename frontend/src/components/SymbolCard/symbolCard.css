@@ -35,11 +35,11 @@
 
 .symbolCard__clicked {
   box-shadow: 0 0 15px 0 var(--colorDark);
-  scale: 1.02;
+  transform: scale(1.05);
 }
 
 .symbolCard__not-clicked {
-  scale: 0.98;
+  transform : scale(0.94);
 }
 
 .symbolCard__green-shadow {

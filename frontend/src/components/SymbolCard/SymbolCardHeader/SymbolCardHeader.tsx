@@ -11,7 +11,7 @@ type SymbolCardHeaderProps = {
 const SymbolCardHeader = ({ id, trend }: SymbolCardHeaderProps) => {
   return (
     <div className="symbolCard__header">
-      <img src={trend === 'UP' ? arrowUp : arrowDown} className="symbolCard__trendIcon" />
+      {trend ? <img src={trend === 'UP' ? arrowUp : arrowDown} className="symbolCard__trendIcon" /> : null}
       {id}
     </div>
   );
