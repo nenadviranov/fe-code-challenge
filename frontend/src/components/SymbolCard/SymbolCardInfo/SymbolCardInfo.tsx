@@ -19,14 +19,17 @@ const SymbolCardBody = ({ price, companyName, industry, marketCap, showCardInfo 
 
     const itemListInfo = [
       {
+        id: 1,
         label: companyName,
         icon : <CompanyIcon/>
       },
       {
+        id: 2,
         label: industry,
         icon: <IndustryIcon />
       },
       {
+        id: 3,
         label: formattedMarketCap,
         icon: <MarketCapIcon />
       }
@@ -41,8 +44,8 @@ const SymbolCardBody = ({ price, companyName, industry, marketCap, showCardInfo 
       {/* {showCardInfo ? <ListItem Icon={<CompanyIcon />} label={companyName} spacing="space-between"/>  : null}
       {showCardInfo ?<ListItem Icon={<IndustryIcon />} label={industry} spacing="space-between" />: null}
       {showCardInfo ?<ListItem Icon={<MarketCapIcon />} label={formattedMarketCap} spacing="space-between" />: null} */}
-      {showCardInfo ? itemListInfo.map(({label, icon}) => (
-      <ListItem Icon={icon} label={label} spacing="space-between" />
+      {showCardInfo ? itemListInfo.map(({id, label, icon}) => (
+      <ListItem key={id} Icon={icon} label={label} spacing="space-between" />
       ))
        : null}
     </div>
