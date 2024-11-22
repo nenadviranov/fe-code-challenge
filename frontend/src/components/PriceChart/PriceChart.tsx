@@ -14,8 +14,10 @@ const PriceChart = ({ symbolId }: PriceChartProps) => {
   const symbol = symbolId || activeSymbol;
   useEffect(() => {
     if (activeSymbol) {
-      dispatch(fetchPriceHistory(activeSymbol));
+      const priceChartHistory = dispatch(fetchPriceHistory(activeSymbol));
+      return () => priceChartHistory.abort()
     }
+    
   }, [dispatch, activeSymbol]);
   const apiState = useAppSelector(selectors.apiState);
   const data = useAppSelector(selectors.selectPriceHistory);
